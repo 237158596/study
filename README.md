@@ -1,1 +1,1 @@
-# study
+# for note userfull code
