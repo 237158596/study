@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: my-gateway
+  cloud:
+    config:
+      uri: ${config.server.uri:http://10.10.99.254:7004/}
+      fail-fast: true
