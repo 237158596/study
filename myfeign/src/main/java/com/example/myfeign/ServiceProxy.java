@@ -29,7 +29,6 @@ public class ServiceProxy<T> implements InvocationHandler {
                 .asString();
 
         return jsonResponse.getBody().toString();
-
     }
 }
 

@@ -39,8 +39,10 @@ public class ServiceBeanDefinitionRegistry implements BeanDefinitionRegistryPost
     public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException {
         //这里一般我们是通过反射获取需要代理的接口的clazz列表
         //比如判断包下面的类，或者通过某注解标注的类等等
-        Set<Class<?>> beanClazzs = scannerPackages("com.example.myfeign.client");
+        Set<Class<?>> beanClazzs = scannerPackages("com.example.myfeign");
         for (Class beanClazz : beanClazzs) {
+            if(Objects.isNull(beanClazz.getAnnotation(Myfeign.class)))
+                continue;
 
             BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(beanClazz);
             GenericBeanDefinition definition = (GenericBeanDefinition) builder.getRawBeanDefinition();
