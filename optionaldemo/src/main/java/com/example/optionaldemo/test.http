@@ -1,0 +1,14 @@
+### TriggerIntent
+GET http://localhost:8082/getUserInfo
+Content-Type: application/json
+
+
+###
+
+
+
+GET http://localhost:8082/getUserInfoNull
+Content-Type: application/json
+
+
+###
