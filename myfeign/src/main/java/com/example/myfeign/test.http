@@ -1,5 +1,5 @@
 ### TriggerIntent
-GET http://localhost:8081/test
+GET http://localhost:8082/test
 Content-Type: application/json
 
 

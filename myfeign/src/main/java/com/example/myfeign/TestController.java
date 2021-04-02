@@ -12,9 +12,15 @@ public class TestController {
     @Autowired
     private BaiduClient baiduClient;
 
+
+    @Autowired
+    private BaiduService baiduService;
+
+
     @RequestMapping("/test")
     public Object getHello() {
-        Object calculateResult = baiduClient.query("热点新闻");
+        Object calculateResult = baiduService.query("热点新闻");
+
         return calculateResult;
     }
 }
