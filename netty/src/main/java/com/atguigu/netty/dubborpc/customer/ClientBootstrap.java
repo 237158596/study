@@ -17,11 +17,11 @@ public class ClientBootstrap {
         //创建代理对象
         HelloService service = (HelloService) customer.getBean(HelloService.class, providerName);
 
-        for (;; ) {
-            Thread.sleep(2 * 1000);
+//        for (;; ) {
+//            Thread.sleep(2 * 1000);
             //通过代理对象调用服务提供者的方法(服务)
             String res = service.hello("你好 dubbo~");
             System.out.println("调用的结果 res= " + res);
-        }
+//        }
     }
 }
