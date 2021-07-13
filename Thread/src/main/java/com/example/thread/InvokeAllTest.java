@@ -8,11 +8,11 @@ public class InvokeAllTest {
     static ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     public static void main(String[] args) {
-        System.out.println(invokeAny("你谁说"));
+        System.out.println(invokeAll("你谁说"));
     }
 
 
-    static String invokeAny(String input) {
+    static String invokeAll(String input) {
         List<Callable<Data>> list = new ArrayList<>();
         list.add(new MycallableA(input));
         list.add(new MycallableB(input));

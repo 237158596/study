@@ -1,0 +1,10 @@
+mqtt:
+  broker: tcp://emqtt-uat.pateo.com.cn:1883
+  userName:
+  passWord:
+  subTopic:
+    - $queue/dd221-soulmate/public/CMD
+    - soulmate/public/SENCECHANGE
+    - soulmate/public/phone
+  connectionTimeout: 10
+  keepAliveInterval: 30

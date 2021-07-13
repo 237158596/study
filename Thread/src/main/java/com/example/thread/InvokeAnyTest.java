@@ -11,7 +11,7 @@ public class InvokeAnyTest {
     static ExecutorService executorService = Executors.newFixedThreadPool(2);
 
     public static void main(String[] args) {
-        System.out.println(invokeAny("你谁说"));
+        System.out.println(invokeAny("翻译内容"));
     }
 
 
@@ -22,7 +22,6 @@ public class InvokeAnyTest {
         try {
             return executorService.invokeAny(list);
         } catch (Exception e) {
-            System.out.println("++++++++++++main方法中捕获异常+++++++++++++++");
             e.printStackTrace();
         }
         return "";
@@ -39,7 +38,7 @@ public class InvokeAnyTest {
         @Override
         public String call() throws Exception {
             Thread.sleep(ThreadLocalRandom.current().nextInt(50));
-            return input + "A";
+            return input + "from A";
         }
     }
 
@@ -53,7 +52,7 @@ public class InvokeAnyTest {
         @Override
         public String call() throws Exception {
             Thread.sleep(ThreadLocalRandom.current().nextInt(50));
-            return input + "B";
+            return input + "from B";
         }
     }
 }

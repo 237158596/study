@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.10.96.175:3306/ms_soulmate?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: soulmate_user
+    password: soulmate_pwd
+    hikari:
+      auto-commit: true
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      minimum-idle: 5
+      maximum-pool-size: 10
+      read-only: false
+
+
+
+
+logging:
+  level:
+    com:
+      example:
+        mybatisplus:
+          t2:
+            mapper:
+              ParamsMapper: debug

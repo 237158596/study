@@ -1,0 +1,73 @@
+eureka:
+  environment: QingAI-dev
+  instance:
+    hostname: my-gateway  # 修改为你的项目名
+    registryFetchIntervalSeconds: 3
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 10
+    preferIpAddress: true
+    healthCheckUrlPath: ${management.endpoints.web.base-path}/health
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    shouldDisableDelta: true
+    serviceUrl:
+      defaultZone: http://10.10.99.254:7000/eureka/
+
+
+management:
+  endpoints:
+    web:
+      base-path: /admin
+      exposure:
+        include: '*'
+        exclude: shutdown,restart
+  endpoint:
+    health:
+      show-details: always
+
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+          semaphore:
+            maxConcurrentRequests: 1000
+      circuitBreaker:
+        sleepWindowInMilliseconds:  1000
+
+server:
+  port: 8099
+
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true  #开启从注册中心动态创建路由的功能，利用微服务名进行路由
+      routes:
+        - id: soulmate-route
+          uri: lb://soulmate-cloud   #http://localhost:8080
+          predicates:
+            - Path=/index
+
+        - id: baidu-route
+          uri: http://news.baidu.com
+          predicates:
+            - Path=/index2
+
+
+logging:
+  level:
+    org.springframework.cloud.gateway.handler.RoutePredicateHandlerMapping: DEBUG
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: DEBUG
